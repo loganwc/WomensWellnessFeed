@@ -11,8 +11,8 @@ import { colors } from '../theme/colors';
 
 interface CategoryFilterProps {
   categories: Category[];
-  selectedCategory: string | null;
-  onSelectCategory: (categoryId: string | null) => void;
+  selectedCategory: number | null;
+  onSelectCategory: (categoryId: number | null) => void;
 }
 
 export const CategoryFilter: React.FC<CategoryFilterProps> = ({

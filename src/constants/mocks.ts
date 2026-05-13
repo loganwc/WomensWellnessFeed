@@ -1,16 +1,16 @@
 import { Article, Category } from "../types";
 
 export const MOCK_CATEGORIES: Category[] = [
-  { id: '1', name: 'Health', icon: 'favorite' },
-  { id: '2', name: 'Wellness', icon: 'spa' },
-  { id: '3', name: 'Lifestyle', icon: 'home' },
-  { id: '4', name: 'Career', icon: 'work' },
-  { id: '5', name: 'Relationships', icon: 'people' },
+  { id: 1, name: 'Health', icon: 'favorite' },
+  { id: 2, name: 'Wellness', icon: 'spa' },
+  { id: 3, name: 'Lifestyle', icon: 'home' },
+  { id: 4, name: 'Career', icon: 'work' },
+  { id: 5, name: 'Relationships', icon: 'people' },
 ];
 
 export const MOCK_ARTICLES: Article[] = [
   {
-    id: '1',
+    id: 1,
     title: 'Understanding Hormonal Health in Your 30s',
     excerpt: 'Essential insights into maintaining hormonal balance and wellness during your thirties. Learn about the key changes and how to adapt your lifestyle.',
     author: 'Dr. Sarah Johnson',
@@ -22,7 +22,7 @@ export const MOCK_ARTICLES: Article[] = [
     isBookmarked: false,
   },
   {
-    id: '2',
+    id: 2,
     title: 'Building Healthy Morning Routines',
     excerpt: 'Discover how to create a morning routine that sets you up for success. Simple, sustainable habits that make a real difference.',
     author: 'Emma Wilson',
@@ -34,7 +34,7 @@ export const MOCK_ARTICLES: Article[] = [
     isBookmarked: true,
   },
   {
-    id: '3',
+    id: 3,
     title: 'Navigating Career Transitions with Confidence',
     excerpt: 'Expert advice on making career changes at any stage. Learn how to identify opportunities and overcome fear.',
     author: 'Lisa Chen',
@@ -46,7 +46,7 @@ export const MOCK_ARTICLES: Article[] = [
     isBookmarked: false,
   },
   {
-    id: '4',
+    id: 4,
     title: 'The Power of Mindful Communication',
     excerpt: 'Transform your relationships through better communication. Practical tips for expressing yourself authentically.',
     author: 'Maya Patel',
@@ -58,7 +58,7 @@ export const MOCK_ARTICLES: Article[] = [
     isBookmarked: false,
   },
   {
-    id: '5',
+    id: 5,
     title: 'Sustainable Living: Small Changes, Big Impact',
     excerpt: 'Practical ways to make your lifestyle more sustainable without overwhelming yourself. Start with these easy swaps.',
     author: 'Rachel Green',

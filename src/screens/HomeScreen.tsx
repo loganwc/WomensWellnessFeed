@@ -13,7 +13,7 @@ import { Article } from '../types';
 import { colors } from '../theme/colors';
 import { MOCK_ARTICLES, MOCK_CATEGORIES } from '../constants/mocks';
 
-export const FeedScreen: React.FC = () => {
+export const HomeScreen: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -42,7 +42,7 @@ export const FeedScreen: React.FC = () => {
     setIsRefreshing(false);
   };
 
-  const handleLike = (id: string) => {
+  const handleLike = (id: number) => {
     setArticles((prev) =>
       prev.map((article) =>
         article.id === id
@@ -52,7 +52,7 @@ export const FeedScreen: React.FC = () => {
     );
   };
 
-  const handleBookmark = (id: string) => {
+  const handleBookmark = (id: number) => {
     setArticles((prev) =>
       prev.map((article) =>
         article.id === id
@@ -79,7 +79,7 @@ export const FeedScreen: React.FC = () => {
       />
       <FlatList
         data={articles}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <FeedCard
             article={item}
