@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, ScrollView, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Category } from '../types';
 import { useTheme } from '../theme/ThemeContext';
@@ -68,6 +68,15 @@ const createStyles = (theme: Theme) =>
         container: {
             minHeight: 50,
             maxHeight: 50,
+            alignSelf: Platform.select({
+                web: 'center',
+                default: 'auto',
+             }),
+            width: Platform.select({
+                web: '80%',
+                default: '100%',
+            }),
+            marginBottom: 10,
         },
         contentContainer: {
             paddingHorizontal: 16,
