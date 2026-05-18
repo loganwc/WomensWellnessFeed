@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, StyleSheet, RefreshControl, Text, ActivityIndicator, Linking } from 'react-native';
+import { View, FlatList, StyleSheet, RefreshControl, Text, ActivityIndicator } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FeedCard } from '../components/FeedCard';
 import { CategoryFilter } from '../components/CategoryFilter';
 import { Article, Category } from '../types';
 import { colors } from '../theme/colors';
 import { fetchPosts, fetchCategories, mapWordPressCategoryToIcon } from '../api/wordpress';
+
+type HomeStackParamList = {
+    HomeMain: undefined;
+    ArticleDetail: { article: Article };
+};
+
+type HomeScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'HomeMain'>;
 
 const POSTS_PER_PAGE = 10;
 
@@ -119,12 +128,10 @@ export const HomeScreen: React.FC = () => {
         );
     };
 
-    const openArticle = async (url: string) => {
-        if (!url) {
-            return;
-        }
+    const navigation = useNavigation<HomeScreenNavigationProp>();
 
-        await Linking.openURL(url);
+    const openArticle = (article: Article) => {
+        navigation.navigate('ArticleDetail', { article });
     };
 
     const filteredArticles = selectedCategory
@@ -157,7 +164,7 @@ export const HomeScreen: React.FC = () => {
                 renderItem={({ item }) => (
                     <FeedCard
                         article={item}
-                        onPress={() => openArticle(item.link)}
+                        onPress={() => openArticle(item)}
                         onLike={() => handleLike(item.id)}
                         onBookmark={() => handleBookmark(item.id)}
                     />

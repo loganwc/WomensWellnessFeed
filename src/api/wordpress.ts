@@ -105,6 +105,7 @@ export const fetchPosts = async (page = 1, perPage = 10): Promise<WordPressPost[
             id: post.id,
             title: decodeHtmlEntities(post.title?.rendered?.trim() ?? 'Untitled'),
             excerpt: decodeHtmlEntities(stripHtml(post.excerpt?.rendered ?? post.content?.rendered ?? '')),
+            content: decodeHtmlEntities(contentText),
             publishedAt: post.date,
             link: post.link,
             category: decodeHtmlEntities(embeddedCategory?.name ?? ''),

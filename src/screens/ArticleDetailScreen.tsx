@@ -1,25 +1,29 @@
 import React from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors } from '../theme/colors';
+import { Article } from '../types';
 
-export const ArticleDetailScreen: React.FC = () => {
+type HomeStackParamList = {
+    ArticleDetail: { article: Article };
+};
+
+type ArticleDetailScreenProps = NativeStackScreenProps<HomeStackParamList, 'ArticleDetail'>;
+
+export const ArticleDetailScreen: React.FC<ArticleDetailScreenProps> = ({ route }) => {
+    const { article } = route.params;
+    const publishedDate = article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : '';
+
     return (
         <ScrollView style={styles.container}>
-            <Image
-                source={{ uri: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800' }}
-                style={styles.heroImage}
-            />
+            {article.imageUrl ? <Image source={{ uri: article.imageUrl }} style={styles.heroImage} /> : null}
             <View style={styles.content}>
-                <Text style={styles.category}>Health</Text>
-                <Text style={styles.title}>Understanding Hormonal Health in Your 30s</Text>
-                <Text style={styles.author}>By Dr. Sarah Johnson • 5 min read</Text>
-                <Text style={styles.body}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                    {'\n\n'}
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
+                {article.category ? <Text style={styles.category}>{article.category}</Text> : null}
+                <Text style={styles.title}>{article.title}</Text>
+                <Text style={styles.author}>
+                    By {article.author ?? 'Author'}{article.readTime ? ` • ${article.readTime} min read` : ''}
                 </Text>
+                <Text style={styles.body}>{article.content ?? article.excerpt}</Text>
             </View>
         </ScrollView>
     );
@@ -52,11 +56,12 @@ const styles = StyleSheet.create({
     author: {
         fontSize: 14,
         color: colors.textSecondary,
-        marginBottom: 24,
+        marginBottom: 18,
     },
     body: {
         fontSize: 16,
-        lineHeight: 24,
+        lineHeight: 20,
         color: colors.text,
+        marginBottom: 24,
     },
 });
