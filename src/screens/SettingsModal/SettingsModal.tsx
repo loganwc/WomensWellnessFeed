@@ -72,61 +72,61 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ visible, onClose }
 
 const createStyles = (theme: Theme) => 
     StyleSheet.create({
-    backdrop: {
-        flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.35)',
-        justifyContent: 'center',
-        padding: 24,
-    },
-    modal: {
-        backgroundColor: theme.surface,
-        borderRadius: 24,
-        padding: 20,
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 20,
-    },
-    title: {
-        fontSize: 22,
-        fontWeight: '700',
-        color: theme.text,
-    },
-    row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingVertical: 16,
-        borderBottomWidth: 1,
-        borderBottomColor: theme.border,
-    },
-    rowLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 12,
-    },
-    rowText: {
-        fontSize: 16,
-        color: theme.text,
-    },
-    actionRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 16,
-        gap: 12,
-    },
-    logoutButton: {
-        marginTop: 16,
-        backgroundColor: theme.primary,
-        paddingVertical: 14,
-        borderRadius: 999,
-        alignItems: 'center',
-    },
-    logoutText: {
-        color: theme.surface,
-        fontSize: 16,
-        fontWeight: '700',
-    },
-});
+        backdrop: {
+            flex: 1,
+            backgroundColor: 'rgba(0, 0, 0, 0.35)',
+            justifyContent: 'center',
+            padding: 24,
+        },
+        modal: {
+            backgroundColor: theme.surface,
+            borderRadius: 24,
+            padding: 20,
+        },
+        header: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 20,
+        },
+        title: {
+            fontSize: 22,
+            fontWeight: '700',
+            color: theme.text,
+        },
+        row: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingVertical: 16,
+            borderBottomWidth: 1,
+            borderBottomColor: theme.border,
+        },
+        rowLeft: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 12,
+        },
+        rowText: {
+            fontSize: 16,
+            color: theme.text,
+        },
+        actionRow: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingVertical: 16,
+            gap: 12,
+        },
+        logoutButton: {
+            marginTop: 16,
+            backgroundColor: theme.primary,
+            paddingVertical: 14,
+            borderRadius: 999,
+            alignItems: 'center',
+        },
+        logoutText: {
+            color: theme.surface,
+            fontSize: 16,
+            fontWeight: '700',
+        },
+    });
