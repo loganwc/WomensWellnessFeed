@@ -1,11 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { colors } from '../theme/colors';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MenuItem } from '../components/MenuItem/MenuItem';
+import { SettingsModal } from './SettingsModal/SettingsModal';
+
+const Stack = createNativeStackNavigator();
 
 export const ProfileScreen: React.FC = () => {
+    const [showSettingsModal, setShowSettingsModal] = React.useState(false);
     return (
-        <ScrollView style={styles.container}>
+        <>
             <View style={styles.header}>
                 <Image
                     source={{
@@ -21,17 +26,20 @@ export const ProfileScreen: React.FC = () => {
                 <MenuItem
                     icon="bookmark"
                     title="Saved Articles"
-                    onPress={() => {
-                        console.log('print saved articles');
-                    }}
+                    onPress={() => {}}
                 />
                 <MenuItem icon="favorite" title="Liked Posts" onPress={() => {}} />
                 <MenuItem icon="notifications" title="Notifications" onPress={() => {}} />
-                <MenuItem icon="settings" title="Settings" onPress={() => {}} />
+                <MenuItem icon="settings" title="Settings" onPress={() => setShowSettingsModal(true)} />
                 <MenuItem icon="help" title="Help & Support" onPress={() => {}} />
                 <MenuItem icon="logout" title="Logout" onPress={() => {}} isLast />
             </View>
-        </ScrollView>
+
+            <SettingsModal
+                visible={showSettingsModal}
+                onClose={() => setShowSettingsModal(false)}
+            />
+        </>
     );
 };
 
