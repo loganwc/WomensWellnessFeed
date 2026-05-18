@@ -3,13 +3,16 @@ import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { MenuItem } from '../components/MenuItem/MenuItem';
 import { useTheme } from '../theme/ThemeContext';
 import { Theme } from '../theme/themes';
+import { SettingsModal } from './SettingsModal/SettingsModal';
 
 export const ProfileScreen: React.FC = () => {
     const { theme, toggleTheme, isDarkMode } = useTheme();
     const styles = createStyles(theme);
 
+    const [showSettingsModal, setShowSettingsModal] = React.useState(false);
+
     return (
-        <ScrollView style={styles.container}>
+        <>
             <View style={styles.header}>
                 <Image
                     source={{
@@ -22,25 +25,23 @@ export const ProfileScreen: React.FC = () => {
             </View>
 
             <View style={styles.section}>
-                <MenuItem
-                    icon="bookmark"
-                    title="Saved Articles"
-                    onPress={() => {
-                        console.log('print saved articles');
-                    }}
-                />
+                <MenuItem icon="bookmark" title="Saved Articles" onPress={() => {}} />
                 <MenuItem icon="favorite" title="Liked Posts" onPress={() => {}} />
                 <MenuItem icon="notifications" title="Notifications" onPress={() => {}} />
-                <MenuItem icon="settings" title="Settings" onPress={() => {}} />
-                <MenuItem icon="help" title="Help & Support" onPress={() => {}} />
                 <MenuItem
-                    icon="brightness-6"
-                    title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                    onPress={toggleTheme}
+                    icon="settings"
+                    title="Settings"
+                    onPress={() => setShowSettingsModal(true)}
                 />
+                <MenuItem icon="help" title="Help & Support" onPress={() => {}} />
                 <MenuItem icon="logout" title="Logout" onPress={() => {}} isLast />
             </View>
-        </ScrollView>
+
+            <SettingsModal
+                visible={showSettingsModal}
+                onClose={() => setShowSettingsModal(false)}
+            />
+        </>
     );
 };
 
