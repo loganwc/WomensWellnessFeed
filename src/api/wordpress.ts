@@ -22,11 +22,16 @@ export interface WordPressPost {
 }
 
 const stripHtml = (html: string): string => {
-    return html
-        .replace(/<script[\s\S]*?<\/script>/gi, '')
-        .replace(/<style[\s\S]*?<\/style>/gi, '')
-        .replace(/<[^>]+>/g, '')
-        .trim();
+     let previous: string;
+     let current = html;
+     do {
+         previous = current;
+         current = current
+             .replace(/<script[\s\S]*?<\/script>/gi, '')
+             .replace(/<style[\s\S]*?<\/style>/gi, '')
+             .replace(/<[^>]+>/g, '');
+     } while (current !== previous);
+     return current.trim();
 };
 
 const decodeHtmlEntities = (text: string): string => {
